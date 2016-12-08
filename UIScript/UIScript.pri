@@ -1,7 +1,7 @@
-TEMPLATE = lib
+TEMPLATE = app
 
 QT += core
 
-SOURCES += $$PWD/ui_script.cpp
+SOURCES += $$PWD/ui_script.cpp \
 
-HEADERS  += $$PWD/ui_script.h
+HEADERS  += $$PWD/ui_script.h \

@@ -1,6 +1,7 @@
 #include "ui_main.h"
 #include "ui_ui_main.h"
-#include <UIScript/ui_script.h>
+#include <weather.h>
+#include <ui_script.h>
 
 ui_main::ui_main(QWidget *parent) :
     QMainWindow(parent),

@@ -23,6 +23,9 @@ HEADERS  += ui_main.h \
 
 FORMS    += ui_main.ui
 
-include(UIScript/UIScript.pri)
-include(Weather/Weather.pri)
+INCLUDEPATH += $$PWD/UIScript
+INCLUDEPATH += $$PWD/Weather
+
+include($$PWD/UIScript/UIScript.pri)
+include($$PWD/Weather/Weather.pri)
 
