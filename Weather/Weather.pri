@@ -2,10 +2,10 @@ TEMPLATE = lib
 
 QT += core network
 
-SOURCES += Weather/darksky_weather.cpp \
-    Weather/weather.cpp \
-    Weather/openweathermap_weather.cpp
+SOURCES += $$PWD/darksky_weather.cpp \
+    $$PWD/weather.cpp \
+    $$PWD/openweathermap_weather.cpp
 
-HEADERS  += Weather/darksky_weather.h \
-    Weather/weather.h \
-    Weather/openweathermap_weather.h
+HEADERS  += $$PWD/darksky_weather.h \
+    $$PWD/weather.h \
+    $$PWD/openweathermap_weather.h

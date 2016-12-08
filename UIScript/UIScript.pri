@@ -2,6 +2,6 @@ TEMPLATE = lib
 
 QT += core
 
-SOURCES += UIScript/ui_script.cpp
+SOURCES += $$PWD/ui_script.cpp
 
-HEADERS  += UIScript/ui_script.h
+HEADERS  += $$PWD/ui_script.h
