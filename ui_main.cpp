@@ -32,7 +32,7 @@ ui_main::ui_main(QWidget *parent) :
         if(resultStyleSheet.isEmpty()) // if Style Sheet is Empty or Can not find file
             qDebug() << "[WARN] Could not find style sheet";
         else
-            setStyleSheet(resultStyleSheet);
+            setStyleSheet(resultStyleSheet.toStdString().c_str());
     }
 }
 
