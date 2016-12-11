@@ -1,0 +1,36 @@
+Main
+{
+background-color: rgb(255, 255, 255);
+}
+
+QButton
+{
+color: rgb(0, 170, 255);
+background-color: rgb(255, 255, 255,0);
+border-width: 0px;
+border-color: rgb(0, 192, 255);
+border-style: solid;
+padding: 3px;
+font-size: 12px;
+padding-left: 5px;
+padding-right: 5px;
+}
+
+QButton_Pressed
+{
+background-color: rgb(245, 245, 245);
+}
+
+
+QLineEdit
+{
+color: rgb(0, 170, 255);
+background-color: rgb(255, 255, 255,0);
+border-width: 0px;
+border-color: rgb(0, 192, 255);
+border-style: solid;
+padding: 3px;
+font-size: 12px;
+padding-left: 5px;
+padding-right: 5px;
+}
