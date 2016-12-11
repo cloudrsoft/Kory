@@ -25,6 +25,20 @@ QString ui_script::getCoreStyleSheet()
     if(strstr(returnStyleSheet.toStdString().c_str(), "QWidget") != NULL || strstr(returnStyleSheet.toStdString().c_str(), "qwidget") != NULL || strstr(returnStyleSheet.toStdString().c_str(), "QWIDGET") != NULL)
         qDebug() << "[UI Script] QWidget Script is Available";
 
+    if(strstr(returnStyleSheet.toStdString().c_str(), "MicButton") != NULL || strstr(returnStyleSheet.toStdString().c_str(), "micbutton") != NULL || strstr(returnStyleSheet.toStdString().c_str(), "MICBUTTON") != NULL)
+    {
+        QString m_parsed = returnStyleSheet.split("MicButton").last();
+        m_parsed = m_parsed.split("{").last();
+        m_parsed = m_parsed.split("}").first();
+
+        if(strstr(m_parsed.toStdString().c_str(), "pos") != NULL)
+        {
+            QString m_posparsed = QString(QString(m_parsed.split("pos:").last()).split(";").first());
+            QPoint pos = QPoint(QString(m_posparsed.split(",").first()).toInt(), QString(m_posparsed.split(",").last()).toInt());
+            qDebug() << pos;
+        }
+    }
+
     return returnStyleSheet;
 }
 

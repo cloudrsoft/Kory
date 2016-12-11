@@ -5,6 +5,7 @@
 
 #include <QString>
 #include <QRegExp>
+#include <QPoint>
 
 class ui_script
 {
