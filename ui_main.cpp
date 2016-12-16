@@ -27,7 +27,7 @@ ui_main::ui_main(QWidget *parent) :
     if (file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         ui_script *style = new ui_script(file.readAll());
-        QString resultStyleSheet = style->getCoreStyleSheet();
+        QString resultStyleSheet = style->getCoreStyleSheet(ui->centralWidget);
 
         if(resultStyleSheet.isEmpty()) // if Style Sheet is Empty or Can not find file
             qDebug() << "[WARN] Could not find style sheet";

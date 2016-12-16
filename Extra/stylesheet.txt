@@ -34,3 +34,9 @@ font-size: 12px;
 padding-left: 5px;
 padding-right: 5px;
 }
+
+MicButton
+{
+pos: 15,12;
+size: widget_width, 15;
+}
