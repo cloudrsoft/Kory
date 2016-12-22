@@ -8,6 +8,11 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+macx{
+    LIBS += -L/usr/local/opt/openssl/lib -lssl -lcrypto
+    INCLUDEPATH += /usr/local/opt/openssl/include
+}
+
 TARGET = Kory
 TEMPLATE = app
 
@@ -25,7 +30,11 @@ FORMS    += ui_main.ui
 
 INCLUDEPATH += $$PWD/UIScript
 INCLUDEPATH += $$PWD/Weather
+INCLUDEPATH += $$PWD/Core
+INCLUDEPATH += $$PWD/DataBase
 
 include($$PWD/UIScript/UIScript.pri)
 include($$PWD/Weather/Weather.pri)
+include($$PWD/Core/Core.pri)
+include($$PWD/DataBase/DataBase.pri)
 
