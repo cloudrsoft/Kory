@@ -1,6 +1,7 @@
 #include "ui_main.h"
 #include "ui_ui_main.h"
 #include <weather.h>
+#include <core.h>
 #include <ui_script.h>
 
 ui_main::ui_main(QWidget *parent) :
@@ -34,6 +35,12 @@ ui_main::ui_main(QWidget *parent) :
         else
             setStyleSheet(resultStyleSheet.toStdString().c_str());
     }
+
+    write *db = new write;
+    db->writeFile("db", "인사", "안녕", QStringList(), write::LANGUAGE_DEFAULT, write::SUBJECT);
+
+    core *ai = new core;
+    ai->getAI("안녕 클라우드", write::LANGUAGE_DEFAULT);
 }
 
 ui_main::~ui_main()

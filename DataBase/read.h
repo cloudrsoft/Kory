@@ -3,11 +3,9 @@
 
 #include <QtCore>
 #include <openssl/aes.h>
+#include <write.h>
 
-namespace ProjectAIDB
-{
-
-    class read
+class read
     {
     public:
 
@@ -16,13 +14,10 @@ namespace ProjectAIDB
         QString getFileName(QString fileName); // 파일 이름 가져오기
         QString getReply(QString fileName, int at); // 대답 가져오기
         int getLang(QString fileName); // 언어 가져오기
+        int getType(QString fileName); // 타입 가져오기
 
         QStringList readFile(QString fileName);
-        bool fileExists(QString fileName);
-        QString getFileLocal(QString fileName);
-        QStringList getAllFileName();
-    };
-
-}
+        QStringList getAllFileName(QString source_dir,int lang = write::LANGUAGE_DEFAULT);
+};
 
 #endif // READ_H

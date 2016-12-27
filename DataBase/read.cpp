@@ -1,8 +1,5 @@
 #include "read.h"
 
-namespace ProjectAIDB
-{
-
     read::read()
     {
 
@@ -27,16 +24,19 @@ namespace ProjectAIDB
 
     int read::getLang(QString fileName)
     {
-        return QString(readFile(fileName).at(3));
+        return QString(readFile(fileName).at(3)).toInt();
+    }
+
+    int read::getType(QString fileName)
+    {
+        return QString(readFile(fileName).at(4)).toInt();
     }
 
     /* 서브 함수 */
 
     QStringList read::readFile(QString fileName)
     {
-        if(fileExists(fileName))
-        {
-            QFile file(getFileLocal(fileName));
+        QFile file(fileName);
             if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
             {
                 file.close();
@@ -54,45 +54,18 @@ namespace ProjectAIDB
             }
             file.close();
             return data;
-        }else{
-            return QStringList();
-        }
     }
 
-    bool read::fileExists(QString fileName)
-    {
-        QDirIterator dirIt("db",QDirIterator::Subdirectories);
-        while (dirIt.hasNext()) {
-            dirIt.next();
-            if (QFileInfo(dirIt.filePath()).isFile())
-            if (QFileInfo(dirIt.filePath()).fileName() == fileName)
-            return true;
-        }
-        return false;
-    }
-
-    QString read::getFileLocal(QString fileName)
-    {
-        QDirIterator dirIt("db",QDirIterator::Subdirectories);
-        while (dirIt.hasNext()) {
-            dirIt.next();
-            if (QFileInfo(dirIt.filePath()).isFile())
-            if (QFileInfo(dirIt.filePath()).fileName() == fileName)
-            return dirIt.filePath();
-        }
-        return QString();
-    }
-
-    QStringList read::getAllFileName()
+    QStringList read::getAllFileName(QString source_dir, int lang)
     {
         QStringList fileList;
-        QDirIterator dirIt("db",QDirIterator::Subdirectories);
+        write *db = new write;
+        QDirIterator dirIt(source_dir + "/" + db->language_string.at(lang),QDirIterator::Subdirectories);
         while (dirIt.hasNext()) {
             dirIt.next();
             if (QFileInfo(dirIt.filePath()).isFile())
             if (QFileInfo(dirIt.filePath()).fileName() != "_FILETYPE")
-            fileList.append(dirIt.fileName());
+                fileList.append(dirIt.filePath());
         }
         return fileList;
     }
-}

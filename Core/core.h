@@ -2,6 +2,7 @@
 #define CORE_H
 
 #include <QString>
+#include <read.h>
 #include <weather.h>
 
 class core
@@ -9,7 +10,7 @@ class core
 public:
     core();
 
-    QString getAI(QString m_target);
+    QString getAI(QString m_target, int lang);
 };
 
 #endif // CORE_H
