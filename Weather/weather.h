@@ -15,7 +15,7 @@
 class Weather
 {
 public:
-    explicit Weather(int api, QString apikey, int latitude, int longitude);
+    explicit Weather(int api, QString apikey, qreal latitude, qreal longitude);
 
     QString dayOfWeek();
 
@@ -29,7 +29,7 @@ public:
 
     QString poweredby(); // Some API are required display Powered By
 
-    void getWeatherData(QString apikey, int latitude, int longitude);
+    void getWeatherData(QString apikey, qreal latitude, qreal longitude);
 
 private:
     darksky_weather *darksky;

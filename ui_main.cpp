@@ -38,9 +38,12 @@ ui_main::ui_main(QWidget *parent) :
 
     write *db = new write;
     db->writeFile("db", "인사", "안녕", QStringList(), write::LANGUAGE_DEFAULT, write::SUBJECT);
+    db->writeFile("db", "대상", "나", QStringList(), write::LANGUAGE_DEFAULT, write::MY);
+    db->writeFile("db", "날씨", "날씨", QStringList(), write::LANGUAGE_DEFAULT, write::GET_WEATHER);
+    db->writeFile("db", "위치", "원주", QStringList() << "37.331024,127.926008", write::LANGUAGE_DEFAULT, write::WEATHER_AREA);
 
     core *ai = new core;
-    ai->getAI("안녕 클라우드", write::LANGUAGE_DEFAULT);
+    qDebug() << ai->getAI("원주 날씨", write::LANGUAGE_DEFAULT);
 }
 
 ui_main::~ui_main()

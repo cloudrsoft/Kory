@@ -22,6 +22,11 @@
         return QString(readFile(fileName).at(2)).split("|").at(at);
     }
 
+    int read::getReplySize(QString fileName)
+    {
+        return QString(readFile(fileName).at(2)).split("|").size();
+    }
+
     int read::getLang(QString fileName)
     {
         return QString(readFile(fileName).at(3)).toInt();

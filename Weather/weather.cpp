@@ -1,6 +1,6 @@
 #include "weather.h"
 
-Weather::Weather(int api, QString apikey, int latitude, int longitude)
+Weather::Weather(int api, QString apikey, qreal latitude, qreal longitude)
 {
     // 0 : DarkSky
     // 1 : OpenWeatherMap
@@ -8,12 +8,10 @@ Weather::Weather(int api, QString apikey, int latitude, int longitude)
     switch(api)
     {
         case 0:
-            url = QString("https://api.darksky.net/forecast/") + QString(apikey) + QString("/");
             apinum = 1;
         break;
 
         case 1:
-            url = QString("http://api.openweathermap.org/data/2.5/weather?lat=37.56826&lon=126.977829") + QString(apikey) + QString("/");
             apinum = 2;
         default:
         break;
@@ -21,7 +19,7 @@ Weather::Weather(int api, QString apikey, int latitude, int longitude)
 
     getWeatherData(apikey, latitude, longitude);
 }
-void Weather::getWeatherData(QString apikey, int latitude, int longitude)
+void Weather::getWeatherData(QString apikey, qreal latitude, qreal longitude)
 {
     QEventLoop eventLoop;
 

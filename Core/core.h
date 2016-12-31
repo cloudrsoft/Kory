@@ -4,6 +4,7 @@
 #include <QString>
 #include <read.h>
 #include <weather.h>
+#include "config.h"
 
 class core
 {

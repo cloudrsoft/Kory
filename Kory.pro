@@ -24,7 +24,8 @@ SOURCES += main.cpp\
 
 HEADERS  += ui_main.h \
     ui_script.h \
-    settings.h
+    settings.h \
+    config.h
 
 FORMS    += ui_main.ui
 
