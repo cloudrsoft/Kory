@@ -2,6 +2,7 @@
 #define UI_MAIN_H
 
 #include <QMainWindow>
+#include <QLineEdit>
 #include <QFile>
 #include <QDir>
 #include <QDebug>
@@ -21,8 +22,12 @@ public:
     explicit ui_main(QWidget *parent = 0);
     ~ui_main();
 
+private slots:
+    void getAI();
+
 private:
     Ui::ui_main *ui;
+    QLineEdit *core_input;
 };
 
 #endif // UI_MAIN_H

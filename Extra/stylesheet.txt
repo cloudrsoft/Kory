@@ -1,6 +1,21 @@
 Main
 {
-background-color: rgb(255, 255, 255);
+background-image: /Users/cloudr/Downloads/Solid-Colored-Free-Pc-Wallpaper-Downloads.jpg;
+}
+
+Functions
+{
+Input_Line,MicButton;
+}
+
+Input_Line
+{
+type: LineEdit;
+pos: bottom;
+size: max,100;
+placeHolderText:Kory를 사용해 주셔서 감사합니다. 음성 명령을 내리시려면 마이크 아이콘을 누르세요.;
+frame: false;
+to_input_line;
 }
 
 QButton
@@ -37,6 +52,6 @@ padding-right: 5px;
 
 MicButton
 {
-pos: 15,12;
-size: widget_width, 15;
+pos: 0,0;
+size: 100,100;
 }

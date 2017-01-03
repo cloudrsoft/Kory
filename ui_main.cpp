@@ -28,7 +28,10 @@ ui_main::ui_main(QWidget *parent) :
     if (file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         ui_script *style = new ui_script(file.readAll());
-        QString resultStyleSheet = style->getCoreStyleSheet(ui->centralWidget);
+        QString resultStyleSheet = style->getCoreStyleSheet(this);
+
+        core_input = qobject_cast<QLineEdit*>(style->getWidget(0));
+        connect(core_input, SIGNAL(returnPressed()), this, SLOT(getAI()));
 
         if(resultStyleSheet.isEmpty()) // if Style Sheet is Empty or Can not find file
             qDebug() << "[WARN] Could not find style sheet";
@@ -43,10 +46,18 @@ ui_main::ui_main(QWidget *parent) :
     db->writeFile("db", "위치", "원주", QStringList() << "37.331024,127.926008", write::LANGUAGE_DEFAULT, write::WEATHER_AREA);
 
     core *ai = new core;
+
     qDebug() << ai->getAI("원주 날씨", write::LANGUAGE_DEFAULT);
 }
 
 ui_main::~ui_main()
 {
     delete ui;
+}
+
+void ui_main::getAI()
+{
+    core *ai = new core;
+    qDebug() << ai->getAI(core_input->text(), write::LANGUAGE_DEFAULT);
+    core_input->clear();
 }

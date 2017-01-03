@@ -4,16 +4,18 @@
 #define UI_SCRIPT_H
 
 #include <QWidget>
+#include <QObject>
 #include <QPushButton>
+#include <QResizeEvent>
+#include <QLineEdit>
 #include <QString>
 #include <QRegExp>
 #include <QPoint>
-#include <QSize>
 
 class ui_script
 {
 public:
-    ui_script(QString styleSheet);
+    explicit ui_script(QString styleSheet);
 
     QString getCoreStyleSheet(QWidget *m_target); // ui 스타일 시트를 Qt 내장 스타일 시트로 되돌린다
 
@@ -22,6 +24,14 @@ public:
     QPoint ParsePoint(QString m_parsed); // 스크립트 함수에 지정된 위치 변수를 파싱
 
     QSize ParseSize(QString m_parsed); // 스크립트 함수에 지정된 크기 변수를 파싱
+
+    QString ParseString(QString m_parsed, QString m_parse_target); // 스크립트 함수에 지정된 문자열 변수를 파싱
+
+    QObject *getWidget(int num);
+
+    void resizeEvent();
+
+    QList<QObject*> *widgetList = new QList<QObject*>;
 
     QString currentStyleSheet; // init 에서 설정된 스타일시트 (스크립트)
 
