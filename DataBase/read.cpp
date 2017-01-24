@@ -44,6 +44,7 @@
         QFile file(fileName);
             if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
             {
+                qDebug() << fileName;
                 file.close();
                 return QStringList();
             }
@@ -73,4 +74,51 @@
                 fileList.append(dirIt.filePath());
         }
         return fileList;
+    }
+
+    QString read::searchFile(QString source_dir, QString fileName, int lang)
+    {
+        write *db = new write;
+        QDirIterator dirIt(source_dir + "/" + db->language_string.at(lang),QDirIterator::Subdirectories);
+        while (dirIt.hasNext()) {
+            dirIt.next();
+            if (QFileInfo(dirIt.filePath()).isFile())
+            if (QFileInfo(dirIt.filePath()).fileName() != "_FILETYPE")
+            if (QFileInfo(dirIt.filePath()).fileName() == fileName)
+                return dirIt.filePath();
+        }
+        return QString();
+    }
+
+    QString read::randomBadReply(QString source_dir, int lang)
+    {
+        write *db = new write;
+        QStringList fileList;
+        QString targetFile;
+        QDirIterator dirIt(source_dir + "/" + db->language_string.at(lang),QDirIterator::Subdirectories);
+        while (dirIt.hasNext()) {
+            dirIt.next();
+            if (QFileInfo(dirIt.filePath()).isFile())
+            if (QFileInfo(dirIt.filePath()).fileName() != "_FILETYPE")
+            if (strstr(dirIt.filePath().toStdString().c_str(), "_BADS") != NULL)
+                fileList.append(dirIt.filePath());
+        }
+
+        targetFile = fileList.at(rand() % fileList.size());
+
+        return getReply(targetFile, rand() % getReplySize(targetFile));
+    }
+
+    QString read::searchFileFromType(QString source_dir, int type, int lang)
+    {
+        write *db = new write;
+        QDirIterator dirIt(source_dir + "/" + db->language_string.at(lang),QDirIterator::Subdirectories);
+        while (dirIt.hasNext()) {
+            dirIt.next();
+            if (QFileInfo(dirIt.filePath()).isFile())
+            if (QFileInfo(dirIt.filePath()).fileName() != "_FILETYPE")
+            if (getType(dirIt.filePath()) == type)
+                return QFileInfo(dirIt.filePath()).fileName();
+        }
+        return QString();
     }

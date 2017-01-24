@@ -35,6 +35,8 @@ QString openweathermap_weather::weatherDescription()
         QJsonObject obj = value.toObject();
         return obj.value("description").toString();
     }
+
+    return QString();
 }
 
 QString openweathermap_weather::weatherIcon()
@@ -47,6 +49,8 @@ QString openweathermap_weather::weatherIcon()
         QJsonObject obj = value.toObject();
         return obj.value("icon").toString();
     }
+
+    return QString();
 }
 
 QString openweathermap_weather::city()

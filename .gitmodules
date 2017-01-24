@@ -1,0 +1,3 @@
+[submodule "lib/QtTelegramBot"]
+	path = lib/QtTelegramBot
+	url = https://github.com/iMoritz/QtTelegramBot.git

@@ -7,8 +7,20 @@
 #include <QDir>
 #include <QDebug>
 #include <QFileInfo>
+#include <QCloseEvent>
+#include <QMessageBox>
+#include <QWidget>
+#include <QTextBrowser>
+#include <QPushButton>
+#include <QTextToSpeech>
 
+#include <customsearch.h>
+#include <geocoding.h>
+
+#include "config.h"
 #include "settings.h"
+#include "learn_manager.h"
+
 
 namespace Ui {
 class ui_main;
@@ -23,6 +35,7 @@ public:
     ~ui_main();
 
 private slots:
+    void closeEvent(QCloseEvent *event);
     void getAI();
 
 private:

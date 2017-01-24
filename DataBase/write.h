@@ -23,12 +23,18 @@ class write
             VERB,
             COMPLEMENT,
             OTHERS,
+            UNKNOWN,
             /* Target */
             MY, // 인공지능을 대상으로
             TARGET, // 말하는 상대방을 대상으로
+            /* Feeling */
+            GOODS,
+            BADS,
             /* Assistant */
             WEATHER_AREA,
-            GET_WEATHER
+            GET_WEATHER,
+            SEARCH,
+            CALENDAR,
         };
 
         QStringList language_string = QStringList() << "default" << "eng" << "kor";

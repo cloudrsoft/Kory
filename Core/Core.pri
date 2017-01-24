@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += core
+QT += core positioning
 
 SOURCES += \
     $$PWD/core.cpp

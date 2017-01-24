@@ -19,6 +19,9 @@ class read
 
         QStringList readFile(QString fileName);
         QStringList getAllFileName(QString source_dir,int lang = write::LANGUAGE_DEFAULT);
+        QString searchFile(QString source_dir, QString fileName, int lang);
+        QString randomBadReply(QString source_dir, int lang); // 안좋은말을 랜덤으로 골라내기
+        QString searchFileFromType(QString source_dir, int type, int lang);
 };
 
 #endif // READ_H

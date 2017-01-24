@@ -12,7 +12,7 @@ ui_main::ui_main(QWidget *parent) :
 
     settings *set = new settings;
 
-    set->setStyleSheetPath("files/stylesheet.txt");
+    set->setStyleSheetPath(":/test/Extra/stylesheet.txt");
 
     QFile file(set->getStyleSheetPath());
 
@@ -39,15 +39,9 @@ ui_main::ui_main(QWidget *parent) :
             setStyleSheet(resultStyleSheet.toStdString().c_str());
     }
 
-    write *db = new write;
-    db->writeFile("db", "인사", "안녕", QStringList(), write::LANGUAGE_DEFAULT, write::SUBJECT);
-    db->writeFile("db", "대상", "나", QStringList(), write::LANGUAGE_DEFAULT, write::MY);
-    db->writeFile("db", "날씨", "날씨", QStringList(), write::LANGUAGE_DEFAULT, write::GET_WEATHER);
-    db->writeFile("db", "위치", "원주", QStringList() << "37.331024,127.926008", write::LANGUAGE_DEFAULT, write::WEATHER_AREA);
-
-    core *ai = new core;
-
-    qDebug() << ai->getAI("원주 날씨", write::LANGUAGE_DEFAULT);
+    Learn_Manager *learn_manager = new Learn_Manager;
+    learn_manager->learnFromFile(":/test/Extra/text.txt", "db");
+    learn_manager->makeFile("text.txt", "db", write::LANGUAGE_KOREAN);
 }
 
 ui_main::~ui_main()
@@ -58,6 +52,10 @@ ui_main::~ui_main()
 void ui_main::getAI()
 {
     core *ai = new core;
-    qDebug() << ai->getAI(core_input->text(), write::LANGUAGE_DEFAULT);
-    core_input->clear();
+    qDebug() << ai->getAI(core_input->text(), write::LANGUAGE_KOREAN, 0, 0);
+}
+
+void ui_main::closeEvent (QCloseEvent *event)
+{
+    event->accept();
 }

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/test">
+        <file>Extra/stylesheet.txt</file>
+        <file>Extra/text.txt</file>
+    </qresource>
+</RCC>

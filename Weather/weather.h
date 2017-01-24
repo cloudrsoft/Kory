@@ -32,7 +32,6 @@ public:
     void getWeatherData(QString apikey, qreal latitude, qreal longitude);
 
 private:
-    darksky_weather *darksky;
     QString url; // Api url
     QByteArray data; // Api json data
     int apinum = 0; // Current Api
