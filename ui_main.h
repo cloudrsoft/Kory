@@ -2,14 +2,13 @@
 #define UI_MAIN_H
 
 #include <QMainWindow>
-#include <QLineEdit>
 #include <QFile>
 #include <QDir>
 #include <QDebug>
 #include <QFileInfo>
 #include <QCloseEvent>
 #include <QMessageBox>
-#include <QWidget>
+#include <QtWidgets>
 #include <QTextBrowser>
 #include <QPushButton>
 #include <QTextToSpeech>
@@ -37,10 +36,21 @@ public:
 private slots:
     void closeEvent(QCloseEvent *event);
     void getAI();
+    void addNewUserMessage();
+    void addNewAIMessage(QString string);
 
 private:
     Ui::ui_main *ui;
     QLineEdit *core_input;
+    QWidget *frame_messages = new QWidget(this);
+    QWidget *messages = new QWidget(frame_messages);
+    QWidget *message_box = new QWidget(messages);
+    QLabel *message_box_label = new QLabel(message_box);
+
+    int message_number = 0;
+    
+    QStringList userMessages;
+    QStringList aiMessages;
 };
 
 #endif // UI_MAIN_H

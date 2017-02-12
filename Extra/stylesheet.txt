@@ -5,7 +5,7 @@ background-image: /Users/cloudr/Downloads/Solid-Colored-Free-Pc-Wallpaper-Downlo
 
 Functions
 {
-Input_Line,MicButton;
+Input_Line,Message_Box,Message_Box_Label;
 }
 
 Input_Line
@@ -16,6 +16,18 @@ size: max,100;
 placeHolderText:Kory를 사용해 주셔서 감사합니다. 음성 명령을 내리시려면 마이크 아이콘을 누르세요.;
 frame: false;
 to_input_line;
+}
+
+Message_Box
+{
+type: Widget;
+pos: bottom;
+size: max,100;
+}
+
+Message_Box_Label
+{
+type: Label;
 }
 
 QButton

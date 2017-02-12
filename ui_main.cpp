@@ -31,6 +31,8 @@ ui_main::ui_main(QWidget *parent) :
         QString resultStyleSheet = style->getCoreStyleSheet(this);
 
         core_input = qobject_cast<QLineEdit*>(style->getWidget(0));
+        message_box = qobject_cast<QWidget*>(style->getWidget(1));
+        message_box_label = qobject_cast<QLabel*>(style->getWidget(2));
         connect(core_input, SIGNAL(returnPressed()), this, SLOT(getAI()));
 
         if(resultStyleSheet.isEmpty()) // if Style Sheet is Empty or Can not find file
@@ -58,4 +60,24 @@ void ui_main::getAI()
 void ui_main::closeEvent (QCloseEvent *event)
 {
     event->accept();
+}
+
+void ui_main::addNewAIMessage(QString string)
+{
+   QWidget *message = message_box;
+   message->setParent(messages);
+   message->move(10, 10 + (message->width() * message_number));
+   message->show();
+   
+   QLabel *message_label = message_box_label;
+   message_label->setText(string);
+   message_label->move(message_label->rect().center());
+   message_label->show();
+   
+   message_number++;
+}
+
+void ui_main::addNewUserMessage()
+{
+
 }

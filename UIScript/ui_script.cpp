@@ -54,7 +54,14 @@ QString ui_script::getCoreStyleSheet(QWidget *m_target)
                     input_line->show();
 
                     widgetList->append(input_line);
-                }else if(strstr(ParseString(m_parse_function, "type").toStdString().c_str(), "Button") != NULL)
+                }else if(strstr(ParseString(m_parse_function, "type").toStdString().c_str(), "Widget") != NULL)
+                {
+                    QWidget *widget = new QWidget(m_target);
+                    widget->move(ParsePoint(m_parse_function));
+                    widget->resize(ParseSize(m_parse_function));
+                    widget->show();
+                    widgetList->append(widget);
+                }else if(strstr(ParseString(m_parse_function, "type").toStdString().c_str(), "LineEdit") != NULL)
                 {
 
                 }
