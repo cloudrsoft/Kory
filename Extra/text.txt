@@ -121,4 +121,9 @@ _WEATHER%NEXT%_WEATHER%NEXT%%DATE% %AREA% 의 날씨는 %DES% 하겠으며, 기�
 일반%NEXT%저기%NEXT%네, 부르셨나요?|오늘 오후에는 무엇을 도와드릴까요?%NEXT%2%NEXT%4
 일반%NEXT%코타나%NEXT%번지수를 잘못 찾으신것 같아요.|주인님, 저는 Stoprtana 입니다.|음..%NEXT%2%NEXT%4
 일반%NEXT%하이 갤럭시%NEXT%번지수를 잘못 찾으신것 같아요.|주인님, 저는 Stoprtana 입니다.|음..%NEXT%2%NEXT%4
+일반%NEXT%빅스비%NEXT%번지수를 잘못 찾으신것 같아요.|주인님, 저는 Stoprtana 입니다.|음..%NEXT%2%NEXT%4
+일반%NEXT%남자친구%NEXT%헤헤 저는 솔로에요|저는 솔로라고요!|아이고야 주인님 살려주세요%NEXT%2%NEXT%4
+일반%NEXT%여자친구%NEXT%헤헤 저는 솔로에요|저는 솔로라고요!|아이고야 주인님 살려주세요%NEXT%2%NEXT%4
+일반%NEXT%남친%NEXT%헤헤 저는 솔로에요|저는 솔로라고요!|아이고야 주인님 살려주세요%NEXT%2%NEXT%4
+일반%NEXT%여친%NEXT%헤헤 저는 솔로에요|저는 솔로라고요!|아이고야 주인님 살려주세요%NEXT%2%NEXT%4
 일반%NEXT%ㅋ%NEXT%많이 웃으면 정신건강에 도움이 되죠.|같이 웃어봐요. 하하하.|ㅋㅋ%NEXT%2%NEXT%4
