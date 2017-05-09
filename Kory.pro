@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui texttospeech
+QT += core
+QT -= gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -14,9 +15,12 @@ macx{
 }
 
 TARGET = Kory
-TEMPLATE = console
 
-CONFIG += c++14 console
+CONFIG += c++14
+CONFIG += console
+CONFIG -= app_bundle
+
+TEMPLATE = app
 
 SOURCES += main.cpp\
     settings.cpp \
@@ -26,8 +30,6 @@ HEADERS  += \
     settings.h \
     config.h \
     learn_manager.h
-
-FORMS    +=
 
 INCLUDEPATH += $$PWD/Weather
 INCLUDEPATH += $$PWD/Core
@@ -40,6 +42,8 @@ include($$PWD/Core/Core.pri)
 include($$PWD/DataBase/DataBase.pri)
 include($$PWD/GoogleAPI/GoogleAPI.pri)
 include($$PWD/Calendar/Calendar.pri)
+
+include($$PWD/lib/QtTelegramBot/QtTelegramBot.pri)
 
 RESOURCES += \
     testresources.qrc
