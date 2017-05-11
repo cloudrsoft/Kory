@@ -168,6 +168,7 @@ QString core::getAI(QString m_target, int lang, qreal lat, qreal lng)
                     returnString.replace("%GOOGLESEARCH%", tmp_returnString);
             }else{
                 QDateTime time = time.currentDateTime();
+                returnString.clear();
                 returnString.append(QString(replyList.at(i).at(random_num % replyList.at(i).size()).toStdString().c_str()).replace("%TIME%", time.time().toString()));
                 is_retype = false;
             }
@@ -178,6 +179,7 @@ QString core::getAI(QString m_target, int lang, qreal lat, qreal lng)
     {
         QString searchFile = db->searchFile("db", "_UNKNOWN", lang);
 
+        returnString.clear();
         returnString.append(db->getReply(searchFile, random_num % db->getReplySize(searchFile))); // 일치하는 문장이 없을때
     }
 

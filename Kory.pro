@@ -1,9 +1,3 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2016-10-29T10:58:04
-#
-#-------------------------------------------------
-
 QT += core
 QT -= gui
 
@@ -42,8 +36,6 @@ include($$PWD/Core/Core.pri)
 include($$PWD/DataBase/DataBase.pri)
 include($$PWD/GoogleAPI/GoogleAPI.pri)
 include($$PWD/Calendar/Calendar.pri)
-
-include($$PWD/lib/QtTelegramBot/QtTelegramBot.pri)
 
 RESOURCES += \
     testresources.qrc
