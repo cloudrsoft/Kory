@@ -1,6 +1,7 @@
 #ifndef LEARN_MANAGER_H
 #define LEARN_MANAGER_H
 
+#include <QDir>
 #include <QFile>
 #include <QTextStream>
 #include <QString>

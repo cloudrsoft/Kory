@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     Learn_Manager *learn_manager = new Learn_Manager;
     learn_manager->learnFromFile(":/test/Extra/text.txt", "db");
 
-    cout << "[INFO] AI " << VERSION << " ( Test )" << endl;
+    cout << "[INFO] " << BOTNAME << " " << VERSION << " ( " << CODENAME << " )" << endl;
 
     while(1)
     {

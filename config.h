@@ -6,5 +6,7 @@
 #define GOOGLE_API_GEOCODING_KEY "YOUR API KEY HERE"
 #define GOOGLE_CUSTOM_SEARCH_CX "YOUR API KEY HERE"
 #define VERSION "1.0"
+#define BOTNAME "qwerty"
+#define CODENAME "Test"
 
 #endif // CONFIG_H

@@ -169,7 +169,7 @@ QString core::getAI(QString m_target, int lang, qreal lat, qreal lng)
             }else{
                 QDateTime time = time.currentDateTime();
                 returnString.clear();
-                returnString.append(QString(replyList.at(i).at(random_num % replyList.at(i).size()).toStdString().c_str()).replace("%TIME%", time.time().toString()));
+                returnString.append(QString(replyList.at(i).at(random_num % replyList.at(i).size()).toStdString().c_str()).replace("%TIME%", time.time().toString()).replace("%BOTNAME%", BOTNAME));
                 is_retype = false;
             }
         }

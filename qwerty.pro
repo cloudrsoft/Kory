@@ -8,7 +8,7 @@ macx{
     INCLUDEPATH += /usr/local/opt/openssl/include
 }
 
-TARGET = Kory
+TARGET = qwerty
 
 CONFIG += c++14
 CONFIG += console

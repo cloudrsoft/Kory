@@ -34,6 +34,11 @@ void Learn_Manager::learn(QString data, QString dir)
 
 void Learn_Manager::learnFromFile(QString file, QString dir)
 {
+    QDir tmp_dir;
+
+    if(!tmp_dir.exists(dir))
+        tmp_dir.mkdir(dir);
+
     QStringList stringList = getList(file);
 
     for(int i = 0; i < stringList.size(); i++)
