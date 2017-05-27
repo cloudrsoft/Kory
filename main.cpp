@@ -18,11 +18,10 @@ int main(int argc, char *argv[])
 
     cout << "[INFO] " << BOTNAME << " " << VERSION << " ( " << CODENAME << " )" << endl;
 
-    while(1)
-    {
+    for(;;){
         cout << "[USER] ";
         string tmp;
-        cin >> tmp;
+        std::getline(std::cin, tmp);
         cout << "[BOT] " << ai->getAI(tmp.c_str(), write::LANGUAGE_KOREAN, 0, 0).toStdString().c_str() << endl;
     }
 

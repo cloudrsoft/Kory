@@ -8,7 +8,7 @@ class write
     {
     public:
         write();
-        bool writeFile(QString source_dir, QString filetype, QString filename, QStringList Reply, int Lang, int Type);
+        bool writeFile(QString source_dir, QString filetype, QString filename, QStringList Reply, int Lang, QString Type);
 
         enum{
             LANGUAGE_DEFAULT,
@@ -35,7 +35,24 @@ class write
             GET_WEATHER,
             SEARCH,
             CALENDAR,
+            WITH
         };
+
+        const char *char_list[4096] = {"text.subject",
+                                 "text.direct_object",
+                                 "text.verb",
+                                 "text.complement",
+                                 "ai.others",
+                                 "ai.unknown",
+                                 "target.my",
+                                 "target.target",
+                                 "feel.good",
+                                 "feel.bad",
+                                 "weather.area",
+                                 "weather.get",
+                                 "google.search",
+                                 "life.calendar",
+                                 "target.with"};
 
         QStringList language_string = QStringList() << "default" << "eng" << "kor";
 };

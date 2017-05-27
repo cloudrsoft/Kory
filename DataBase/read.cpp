@@ -32,9 +32,9 @@
         return QString(readFile(fileName).at(3)).toInt();
     }
 
-    int read::getType(QString fileName)
+    QString read::getType(QString fileName)
     {
-        return QString(readFile(fileName).at(4)).toInt();
+        return QString(readFile(fileName).at(4));
     }
 
     /* 서브 함수 */
@@ -109,7 +109,7 @@
         return getReply(targetFile, rand() % getReplySize(targetFile));
     }
 
-    QString read::searchFileFromType(QString source_dir, int type, int lang)
+    QString read::searchFileFromType(QString source_dir, QString type, int lang)
     {
         write *db = new write;
         QDirIterator dirIt(source_dir + "/" + db->language_string.at(lang),QDirIterator::Subdirectories);

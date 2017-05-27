@@ -1,18 +1,18 @@
-_BADS%NEXT%멍청%NEXT%제가 주인님의 명령에 때로 바보가 될 때도 있죠.|저런, 저에게 그런말씀은 하시는거 아니에요.|하하하. 뭐 할말도 없는것 같네요.%NEXT%2%NEXT%9
-_BADS%NEXT%멍청이%NEXT%제가 주인님의 명령에 때로 바보가 될 때도 있죠.|저런, 저에게 그런말씀은 하시는거 아니에요.|하하하. 뭐 할말도 없는것 같네요.%NEXT%2%NEXT%9
-_BADS%NEXT%바보%NEXT%제가 주인님의 명령에 때로 바보가 될 때도 있죠.|저런, 저에게 그런말씀은 하시는거 아니에요.|하하하. 뭐 할말도 없는것 같네요.%NEXT%2%NEXT%9
-_BADS%NEXT%시발%NEXT%저런, 그런 말씀은 하시지 마세요.|기분이 나쁘네요.|하하하. 뭐 할말도 없는것 같네요.%NEXT%2%NEXT%9
-_BADS%NEXT%씨발%NEXT%저런, 그런 말씀은 하시지 마세요.|기분이 나쁘네요.|하하하. 뭐 할말도 없는것 같네요.%NEXT%2%NEXT%9
-_GOODS%NEXT%고마워%NEXT%제가 할 말인걸요.|감사합니다!|ㅎㅎ%NEXT%2%NEXT%8
-_GOODS%NEXT%좋아%NEXT%고마워요!|감사합니다!|ㅎㅎ%NEXT%2%NEXT%8
+_BADS%NEXT%멍청%NEXT%제가 주인님의 명령에 때로 바보가 될 때도 있죠.|저런, 저에게 그런말씀은 하시는거 아니에요.|하하하. 뭐 할말도 없는것 같네요.%NEXT%2%NEXT%feel.bad
+_BADS%NEXT%멍청이%NEXT%제가 주인님의 명령에 때로 바보가 될 때도 있죠.|저런, 저에게 그런말씀은 하시는거 아니에요.|하하하. 뭐 할말도 없는것 같네요.%NEXT%2%NEXT%feel.bad
+_BADS%NEXT%바보%NEXT%제가 주인님의 명령에 때로 바보가 될 때도 있죠.|저런, 저에게 그런말씀은 하시는거 아니에요.|하하하. 뭐 할말도 없는것 같네요.%NEXT%2%NEXT%feel.bad
+_BADS%NEXT%시발%NEXT%저런, 그런 말씀은 하시지 마세요.|기분이 나쁘네요.|하하하. 뭐 할말도 없는것 같네요.%NEXT%2%NEXT%feel.bad
+_BADS%NEXT%씨발%NEXT%저런, 그런 말씀은 하시지 마세요.|기분이 나쁘네요.|하하하. 뭐 할말도 없는것 같네요.%NEXT%2%NEXT%feel.bad
+_GOODS%NEXT%고마워%NEXT%제가 할 말인걸요.|감사합니다!|ㅎㅎ%NEXT%2%NEXT%feel.good
+_GOODS%NEXT%좋아%NEXT%고마워요!|감사합니다!|ㅎㅎ%NEXT%2%NEXT%feel.good
 _UNKNOWN%NEXT%_UNKNOWN%NEXT%저런, 이해하지 못했어요.|주인님께서 말씀드린 내용을 Google에서 검색해 드릴 수 있어요.|음, 이해하지 못했어요.%NEXT%2%NEXT%5
 _WEATHER%NEXT%_WEATHER%NEXT%%DATE% %AREA% 의 날씨는 %DES% 하겠으며, 기온은 약 %TEMP%도 입니다|%DATE% %AREA% 의 날씨는 %DES% 하겠으며, 기온은 약 %TEMP%도 입니다. 오늘 하루도 기운 내세요!|%DATE% %AREA% 의 날씨는 %DES% 하겠으며, 기온은 약 %TEMP%도 입니다. 무엇을 도와드릴까요?%NEXT%2%NEXT%5
 검색%NEXT%검색%NEXT%Google 에서 주인님께서 말씀하신것에 대해 검색을 해볼께요. %GOOGLESEARCH%|요청하신 내용을 Google 에서 검색해 보았습니다. %GOOGLESEARCH%%NEXT%2%NEXT%12
 날씨%NEXT%날씨%NEXT%%NEXT%2%NEXT%11
 대상%NEXT%qwerty%NEXT%%NEXT%2%NEXT%6
-대상%NEXT%나%NEXT%%NEXT%2%NEXT%7
-대상%NEXT%너%NEXT%%NEXT%2%NEXT%6
-대상%NEXT%넌%NEXT%%NEXT%2%NEXT%6
+대상%NEXT%나%NEXT%%NEXT%2%NEXT%target.target
+대상%NEXT%너%NEXT%%NEXT%2%NEXT%target.me
+대상%NEXT%넌%NEXT%%NEXT%2%NEXT%target.me
 대상%NEXT%쿼티%NEXT%%NEXT%2%NEXT%6
 위치%NEXT%가평%NEXT%37.8315403,127.50988269999993%NEXT%2%NEXT%10
 위치%NEXT%강남구%NEXT%37.5172363,127.04732480000007%NEXT%2%NEXT%10
@@ -123,3 +123,4 @@ _WEATHER%NEXT%_WEATHER%NEXT%%DATE% %AREA% 의 날씨는 %DES% 하겠으며, 기�
 일반%NEXT%남친%NEXT%헤헤 저는 솔로에요|저는 솔로라고요!|아이고야 주인님 살려주세요%NEXT%2%NEXT%4
 일반%NEXT%여친%NEXT%헤헤 저는 솔로에요|저는 솔로라고요!|아이고야 주인님 살려주세요%NEXT%2%NEXT%4
 일반%NEXT%ㅋ%NEXT%많이 웃으면 정신건강에 도움이 되죠.|같이 웃어봐요. 하하하.|ㅋㅋ%NEXT%2%NEXT%4
+대상%NEXT%와%NEXT%많이 웃으면 정신건강에 도움이 되죠.|같이 웃어봐요. 하하하.|ㅋㅋ%NEXT%2%NEXT%4

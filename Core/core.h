@@ -35,6 +35,7 @@ signals:
 
 private:
     settings *set = new settings();
+    write *wdb = new write();
 };
 
 #endif // CORE_H

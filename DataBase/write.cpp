@@ -5,7 +5,7 @@
 
     }
 
-    bool write::writeFile(QString source_dir, QString filetype, QString filename, QStringList Reply, int Lang, int Type)
+    bool write::writeFile(QString source_dir, QString filetype, QString filename, QStringList Reply, int Lang, QString Type)
     {
         QDir dir;
         QString dir_name;
@@ -61,7 +61,7 @@
 
         QTextStream tempStream(&file);
 
-        tempStream << filetype + "\n" << filename + "\n" << reply_string + "\n" << QString::number(Lang) + "\n" << QString::number(Type);
+        tempStream << filetype + "\n" << filename + "\n" << reply_string + "\n" << QString::number(Lang) + "\n" << Type;
 
         /*QString tempString = tempStream.readAll();
         unsigned char in[] = (unsigned char)(tempString.toStdString().c_str());
