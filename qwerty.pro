@@ -18,12 +18,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
     settings.cpp \
-    learn_manager.cpp
+    learn_manager.cpp \
+    data.cpp \
+    lang_settings.cpp
 
 HEADERS  += \
     settings.h \
     config.h \
-    learn_manager.h
+    learn_manager.h \
+    data.h \
+    lang_settings.h
 
 INCLUDEPATH += $$PWD/Weather
 INCLUDEPATH += $$PWD/Core

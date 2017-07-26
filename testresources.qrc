@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/test">
-        <file>Extra/text.txt</file>
+        <file>Extra/default_data.txt</file>
+        <file>Extra/kr_text.txt</file>
+        <file>Extra/en_text.txt</file>
     </qresource>
 </RCC>

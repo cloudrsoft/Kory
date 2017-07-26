@@ -19,7 +19,7 @@ public:
     void learn(QString data, QString dir);
     void learnFromFile(QString file, QString dir);
 
-    void makeFile(QString filePath, QString dir, int lang);
+    void makeFile(QString filePath, QString dir, QString lang);
 };
 
 #endif // LEARN_MANAGER_H

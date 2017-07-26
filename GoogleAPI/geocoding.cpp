@@ -15,6 +15,16 @@ Location geocoding::getLocation()
     return tmp;
 }
 
+Address geocoding::getAddress()
+{
+    Address tmp;
+    QJsonDocument results = QJsonDocument::fromJson(data);
+    QJsonObject location_object = results.object()["results"].toArray().at(0).toObject().value("address_components").toArray().at(0).toObject();
+    tmp.long_name = location_object["long_name"].toVariant().toString();
+    tmp.short_name = location_object["short_name"].toVariant().toString();
+    return tmp;
+}
+
 void geocoding::getJsonData(QString api_key, QString address)
 {
     QEventLoop eventLoop;

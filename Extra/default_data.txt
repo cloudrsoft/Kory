@@ -1,0 +1,16 @@
+text.subject
+text.direct_object
+text.verb
+text.complement
+ai.others
+ai.unknown
+target.my
+target.target
+target.with
+feel.good
+feel.bad
+weather.area
+weather.get
+google.search
+life.calendar
+life.day

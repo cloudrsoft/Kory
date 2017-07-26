@@ -9,4 +9,5 @@ SOURCES += \
 HEADERS  += \
     $$PWD/customsearch.h \
     $$PWD/geocoding.h \
-    $$PWD/types/location.h
+    $$PWD/types/location.h \
+    $$PWD/types/address.h

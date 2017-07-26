@@ -29,7 +29,7 @@ void Learn_Manager::learn(QString data, QString dir)
     QStringList learn = data.split("%NEXT%");
 
     write *db = new write;
-    db->writeFile(dir, learn.at(0), learn.at(1), QString(learn.at(2)).split("|"), QString(learn.at(3)).toInt(), QString(learn.at(4)));
+    db->writeFile(dir, learn.at(0), learn.at(1), QString(learn.at(2)).split("|"), QString(learn.at(3)), QString(learn.at(4)));
 }
 
 void Learn_Manager::learnFromFile(QString file, QString dir)
@@ -47,7 +47,7 @@ void Learn_Manager::learnFromFile(QString file, QString dir)
     }
 }
 
-void Learn_Manager::makeFile(QString filePath, QString dir, int lang)
+void Learn_Manager::makeFile(QString filePath, QString dir, QString lang)
 {
     read *db = new read;
     QStringList fileList = db->getAllFileName(dir, lang);
@@ -63,7 +63,7 @@ void Learn_Manager::makeFile(QString filePath, QString dir, int lang)
            replyList.append(db->getReply(fileList.at(i), a));
        }
 
-       stringList.append(db->getFileType(fileList.at(i)) + "%NEXT%" + db->getFileName(fileList.at(i)) + "%NEXT%" + replyList.join("|") + "%NEXT%" + QString::number(db->getLang(fileList.at(i))) + "%NEXT%" + db->getType(fileList.at(i)));
+       stringList.append(db->getFileType(fileList.at(i)) + "%NEXT%" + db->getFileName(fileList.at(i)) + "%NEXT%" + replyList.join("|") + "%NEXT%" + db->getLang(fileList.at(i)) + "%NEXT%" + db->getType(fileList.at(i)));
    }
 
    QFile file(filePath);

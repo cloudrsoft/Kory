@@ -16,6 +16,7 @@
 #include <settings.h>
 #include <customsearch.h>
 #include <geocoding.h>
+
 #include "config.h"
 
 class core : public QObject
@@ -23,9 +24,22 @@ class core : public QObject
 public:
     explicit core();
 
-    QString getAI(QString m_target, int lang, qreal lat, qreal lng);
+    QString getAI(QString m_target, QString lang, qreal lat, qreal lng);
 
     QGeoCoordinate getLocation();
+
+    char *stristr(const char *string,const char *strSearch)
+    {
+         const char *s,*sub;
+
+         for (;*string;string++) {
+              for (sub=strSearch,s=string;*sub && *s;sub++,s++) {
+                  if (tolower(*s) != tolower(*sub)) break;
+              }
+              if (*sub == 0) return (char *)string;
+         }
+         return NULL;
+    }
 
 private slots:
     void positionUpdated(QGeoPositionInfo geoPositionInfo);

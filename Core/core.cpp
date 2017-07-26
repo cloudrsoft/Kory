@@ -5,7 +5,7 @@ core::core()
 
 }
 
-QString core::getAI(QString m_target, int lang, qreal lat, qreal lng)
+QString core::getAI(QString m_target, QString lang, qreal lat, qreal lng)
 {
     srand((unsigned int) time(NULL));
 
@@ -25,13 +25,13 @@ QString core::getAI(QString m_target, int lang, qreal lat, qreal lng)
 
     for(int i = 0; i < fileList.size(); i++)
     {
-            if(strstr(m_target.toStdString().c_str(), db->getFileName(fileList.at(i)).toStdString().c_str()) != NULL)
+            if(stristr(m_target.toStdString().c_str(), db->getFileName(fileList.at(i)).toStdString().c_str()) != NULL)
             {
                 stringList.append(db->getFileName(fileList.at(i)).toStdString().c_str());
-                if(strstr(QString(fileList.at(i)).toStdString().c_str(), "_BADS") != NULL)
-                    sentenceList.append(wdb->char_list[write::BADS]);
-                else if(strstr(QString(fileList.at(i)).toStdString().c_str(), "_GOODS") != NULL)
-                    sentenceList.append(wdb->char_list[write::GOODS]);
+                if(stristr(QString(fileList.at(i)).toStdString().c_str(), "_BADS") != NULL)
+                    sentenceList.append("feel.bad");
+                else if(stristr(QString(fileList.at(i)).toStdString().c_str(), "_GOODS") != NULL)
+                    sentenceList.append("feel.good");
                 else
                     sentenceList.append(db->getType(fileList.at(i)));
 
@@ -50,17 +50,19 @@ QString core::getAI(QString m_target, int lang, qreal lat, qreal lng)
     bool is_retype = true;
     bool is_good_message = false;
     bool is_bad_message = false;
-    int goodCount = set->getGoodPoint();
-    int badCount = set->getBadPoint();
+    int goodCount;
+    int badCount;
 
     int tmp_goodCount = goodCount;
     int tmp_badCount = badCount;
+
+    set->loadAPIKey();
 
     for(int i = 0; i < stringList.size(); i++)
     {
         if(is_retype)
         {
-            if(sentenceList.at(i) == wdb->char_list[write::MY])
+            if(sentenceList.at(i) == "target.my")
             {
                 if(is_good_message)
                 {
@@ -91,12 +93,12 @@ QString core::getAI(QString m_target, int lang, qreal lat, qreal lng)
                     is_bad_message = false;
                 }
 
-                Target = wdb->char_list[write::MY];
-            }else if(sentenceList.at(i) == wdb->char_list[write::TARGET])
-                Target = wdb->char_list[write::TARGET];
-            else if(sentenceList.at(i) == wdb->char_list[write::BADS])
+                Target = "target.my";
+            }else if(sentenceList.at(i) == "target.target")
+                Target = "target.target";
+            else if(sentenceList.at(i) == "feel.bad")
             {
-                if(Target == wdb->char_list[write::MY])
+                if(Target == "target.my")
                 {
                     badCount++;
                     goodCount--;
@@ -105,27 +107,30 @@ QString core::getAI(QString m_target, int lang, qreal lat, qreal lng)
                 returnString.append(replyList.at(i).at(random_num % replyList.at(i).size()));
                 is_retype = false;
                 is_bad_message = true;
-            }else if(sentenceList.at(i) == wdb->char_list[write::WEATHER_AREA])
+            }else if(sentenceList.at(i) == "weather.area")
             {
                 QString location = replyList.at(i).join(QString());
-                Weather *weather = new Weather(0, WEATHER_API_KEY, (int)QString(location.split(",").first()).toDouble(), (int)QString(location.split(",").last()).toDouble());
+                Weather *weather = new Weather(0, set->getWeatherAPIKey(), (int)QString(location.split(",").first()).toDouble(), (int)QString(location.split(",").last()).toDouble());
                 QString target_file = db->searchFile("db", "_WEATHER", lang);
+                returnString.clear();
                 returnString.append(db->getReply(target_file, rand() % db->getReplySize(target_file)).replace("%DATE%", weather->dayOfWeek()).replace("%AREA%", stringList.at(i)).replace("%TEMP%", weather->temperature()).replace("%DES%", weather->weatherDescription())); // 지역과 함께 날씨 가져오기
-            }else if(sentenceList.at(i) == wdb->char_list[write::GET_WEATHER])
+            }else if(sentenceList.at(i) == "weather.get")
             {
                 if(i == stringList.size()){
-                    Weather *weather = new Weather(0, WEATHER_API_KEY, lat, lng);
+                    Weather *weather = new Weather(0, set->getWeatherAPIKey(), lat, lng);
                     QString target_file = db->searchFile("db", "_WEATHER", lang);
+                    returnString.clear();
                     returnString.append(db->getReply(target_file, rand() % db->getReplySize(target_file)).replace("%DATE%", weather->dayOfWeek()).replace("%AREA%", m_target.replace(stringList.at(i), QString())).replace("%TEMP%", weather->temperature()).replace("%DES%", weather->weatherDescription())); // 현재 위치의 날씨만 가져오기
                 }else{
-                    geocoding *geo = new geocoding(GOOGLE_API_GEOCODING_KEY, m_target.replace(stringList.at(i), QString()));
-                    Weather *weather = new Weather(0, WEATHER_API_KEY, geo->getLocation().lat, geo->getLocation().lng);
+                    geocoding *geo = new geocoding(set->getGeoCodingAPIKey(), m_target.replace(stringList.at(i), QString()));
+                    Weather *weather = new Weather(0, set->getWeatherAPIKey(), geo->getLocation().lat, geo->getLocation().lng);
                     QString target_file = db->searchFile("db", "_WEATHER", lang);
-                    returnString.append(db->getReply(target_file, rand() % db->getReplySize(target_file)).replace("%DATE%", weather->dayOfWeek()).replace("%AREA%", m_target.replace(stringList.at(i), QString())).replace("%TEMP%", weather->temperature()).replace("%DES%", weather->weatherDescription())); // 지역과 함께 날씨 가져오기
+                    returnString.clear();
+                    returnString.append(db->getReply(target_file, rand() % db->getReplySize(target_file)).replace("%DATE%", weather->dayOfWeek()).replace("%AREA%", geo->getAddress().short_name).replace("%TEMP%", weather->temperature()).replace("%DES%", weather->weatherDescription())); // 지역과 함께 날씨 가져오기
 
                 }
-            }else if(sentenceList.at(i) == wdb->char_list[write::GOODS]){
-                if(Target == wdb->char_list[write::MY])
+            }else if(sentenceList.at(i) == "feel.bad"){
+                if(Target == "target.my")
                 {
                     if(goodCount > badCount)
                     {
@@ -150,9 +155,9 @@ QString core::getAI(QString m_target, int lang, qreal lat, qreal lng)
                 is_retype = false;
 
                 is_good_message = true;
-            }else if(sentenceList.at(i) == wdb->char_list[write::SEARCH]){
+            }else if(sentenceList.at(i) == "google.search"){
                     returnString.append(QString(replyList.at(i).at(random_num % replyList.at(i).size()).toStdString().c_str()));
-                    CustomSearch *search = new CustomSearch(GOOGLE_API_CUSTOM_SEARCH_KEY, GOOGLE_CUSTOM_SEARCH_CX, m_target.split(db->searchFileFromType("db", wdb->char_list[write::SEARCH], lang)).last());
+                    CustomSearch *search = new CustomSearch(set->getCustomSearchAPIKey(), set->getCustomSearchCXKey(), m_target.split(db->searchFileFromType("db", "google.search", lang)).last());
 
                     QString tmp_returnString;
 
@@ -167,7 +172,7 @@ QString core::getAI(QString m_target, int lang, qreal lat, qreal lng)
                     }
 
                     returnString.replace("%GOOGLESEARCH%", tmp_returnString);
-            }else if(sentenceList.at(i) == wdb->char_list[write::WITH]){
+            }else if(sentenceList.at(i) == "target.with"){
                 WithTarget = sentenceList.at(i - 1);
             }else{
                 QDateTime time = time.currentDateTime();

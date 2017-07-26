@@ -15,6 +15,7 @@
 #include <QUrl>
 
 #include "types/location.h"
+#include "types/address.h"
 
 class geocoding
 {
@@ -22,6 +23,7 @@ public:
     geocoding(QString api_key, QString address);
 
     Location getLocation();
+    Address getAddress();
 
     void getJsonData(QString api_key, QString address);
 

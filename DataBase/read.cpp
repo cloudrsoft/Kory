@@ -27,9 +27,9 @@
         return QString(readFile(fileName).at(2)).split("|").size();
     }
 
-    int read::getLang(QString fileName)
+    QString read::getLang(QString fileName)
     {
-        return QString(readFile(fileName).at(3)).toInt();
+        return QString(readFile(fileName).at(3));
     }
 
     QString read::getType(QString fileName)
@@ -62,11 +62,10 @@
             return data;
     }
 
-    QStringList read::getAllFileName(QString source_dir, int lang)
+    QStringList read::getAllFileName(QString source_dir, QString lang)
     {
         QStringList fileList;
-        write *db = new write;
-        QDirIterator dirIt(source_dir + "/" + db->language_string.at(lang),QDirIterator::Subdirectories);
+        QDirIterator dirIt(source_dir + "/" + lang,QDirIterator::Subdirectories);
         while (dirIt.hasNext()) {
             dirIt.next();
             if (QFileInfo(dirIt.filePath()).isFile())
@@ -76,10 +75,9 @@
         return fileList;
     }
 
-    QString read::searchFile(QString source_dir, QString fileName, int lang)
+    QString read::searchFile(QString source_dir, QString fileName, QString lang)
     {
-        write *db = new write;
-        QDirIterator dirIt(source_dir + "/" + db->language_string.at(lang),QDirIterator::Subdirectories);
+        QDirIterator dirIt(source_dir + "/" + lang,QDirIterator::Subdirectories);
         while (dirIt.hasNext()) {
             dirIt.next();
             if (QFileInfo(dirIt.filePath()).isFile())
@@ -90,12 +88,11 @@
         return QString();
     }
 
-    QString read::randomBadReply(QString source_dir, int lang)
+    QString read::randomBadReply(QString source_dir, QString lang)
     {
-        write *db = new write;
         QStringList fileList;
         QString targetFile;
-        QDirIterator dirIt(source_dir + "/" + db->language_string.at(lang),QDirIterator::Subdirectories);
+        QDirIterator dirIt(source_dir + "/" + lang,QDirIterator::Subdirectories);
         while (dirIt.hasNext()) {
             dirIt.next();
             if (QFileInfo(dirIt.filePath()).isFile())
@@ -109,10 +106,9 @@
         return getReply(targetFile, rand() % getReplySize(targetFile));
     }
 
-    QString read::searchFileFromType(QString source_dir, QString type, int lang)
+    QString read::searchFileFromType(QString source_dir, QString type, QString lang)
     {
-        write *db = new write;
-        QDirIterator dirIt(source_dir + "/" + db->language_string.at(lang),QDirIterator::Subdirectories);
+        QDirIterator dirIt(source_dir + "/" + lang,QDirIterator::Subdirectories);
         while (dirIt.hasNext()) {
             dirIt.next();
             if (QFileInfo(dirIt.filePath()).isFile())

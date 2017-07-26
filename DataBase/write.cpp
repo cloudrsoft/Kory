@@ -5,31 +5,12 @@
 
     }
 
-    bool write::writeFile(QString source_dir, QString filetype, QString filename, QStringList Reply, int Lang, QString Type)
+    bool write::writeFile(QString source_dir, QString filetype, QString filename, QStringList Reply, QString Lang, QString Type)
     {
         QDir dir;
         QString dir_name;
-        QString lang_string;
 
-        switch(Lang)
-        {
-            case LANGUAGE_DEFAULT:
-                lang_string = language_string.at(Lang);
-                break;
-
-            case LANGUAGE_ENGLISH:
-                lang_string = language_string.at(Lang);
-                break;
-
-            case LANGUAGE_KOREAN:
-                lang_string = language_string.at(Lang);
-                break;
-
-            default:
-                break;
-        }
-
-        dir_name = source_dir + "/" + lang_string + "/";
+        dir_name = source_dir + "/" + Lang + "/";
 
         if(!dir.exists(dir_name))
             dir.mkdir(dir_name);
@@ -61,7 +42,7 @@
 
         QTextStream tempStream(&file);
 
-        tempStream << filetype + "\n" << filename + "\n" << reply_string + "\n" << QString::number(Lang) + "\n" << Type;
+        tempStream << filetype + "\n" << filename + "\n" << reply_string + "\n" << Lang + "\n" << Type;
 
         /*QString tempString = tempStream.readAll();
         unsigned char in[] = (unsigned char)(tempString.toStdString().c_str());
