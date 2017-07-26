@@ -2,7 +2,6 @@
 #define READ_H
 
 #include <QtCore>
-#include <openssl/aes.h>
 #include <write.h>
 
 class read

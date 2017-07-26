@@ -5,8 +5,6 @@
 #include <QByteArray>
 #include <QStringList>
 #include <QDateTime>
-#include <QGeoPositionInfo>
-#include <QGeoPositionInfoSource>
 #include <QEventLoop>
 #include <QObject>
 
@@ -26,8 +24,6 @@ public:
 
     QString getAI(QString m_target, QString lang, qreal lat, qreal lng);
 
-    QGeoCoordinate getLocation();
-
     char *stristr(const char *string,const char *strSearch)
     {
          const char *s,*sub;
@@ -40,12 +36,6 @@ public:
          }
          return NULL;
     }
-
-private slots:
-    void positionUpdated(QGeoPositionInfo geoPositionInfo);
-
-signals:
-    void isUpdated(QGeoPositionInfo info);
 
 private:
     settings *set = new settings();

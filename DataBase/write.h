@@ -2,7 +2,6 @@
 #define WRITE_H
 
 #include <QtCore>
-#include <openssl/aes.h>
 
 class write
     {
