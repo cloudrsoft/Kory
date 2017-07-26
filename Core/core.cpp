@@ -18,7 +18,7 @@ QString core::getAI(QString m_target, QString lang, qreal lat, qreal lng)
     /* 문자열 처리 */
 
     QStringList stringList; // 단어별로 문장을 분리해서 처리할때 사용
-    QStringList sentenceList; // SUBJECT 같은 ENUM 으로 선언된 문장의 Type을 담는데 사용
+    QStringList sentenceList; // 선언된 문장의 Type을 담는데 사용
     QList<QStringList> replyList; // Reply 를 가져오기
 
     /* 메인 코드 */
@@ -109,11 +109,20 @@ QString core::getAI(QString m_target, QString lang, qreal lat, qreal lng)
                 is_bad_message = true;
             }else if(sentenceList.at(i) == "weather.area")
             {
+                QString temp_weather_area = m_target.replace(stringList.at(i), QString());
+
+                for(int a = 0; a < stringList.size(); a++)
+                {
+                    if(QString(sentenceList.at(0)) == "weather.area"){ } else { temp_weather_area.replace(stringList.at(i), QString()); }
+                }
+
+                geocoding *geo = new geocoding(set->getGeoCodingAPIKey(), temp_weather_area);
                 QString location = replyList.at(i).join(QString());
                 Weather *weather = new Weather(0, set->getWeatherAPIKey(), (int)QString(location.split(",").first()).toDouble(), (int)QString(location.split(",").last()).toDouble());
                 QString target_file = db->searchFile("db", "_WEATHER", lang);
                 returnString.clear();
-                returnString.append(db->getReply(target_file, rand() % db->getReplySize(target_file)).replace("%DATE%", weather->dayOfWeek()).replace("%AREA%", stringList.at(i)).replace("%TEMP%", weather->temperature()).replace("%DES%", weather->weatherDescription())); // 지역과 함께 날씨 가져오기
+                returnString.append(db->getReply(target_file, rand() % db->getReplySize(target_file)).replace("%DATE%", weather->dayOfWeek()).replace("%AREA%", geo->getAddress().short_name).replace("%TEMP%", weather->temperature()).replace("%DES%", weather->weatherDescription())); // 지역과 함께 날씨 가져오기
+                is_retype = false;
             }else if(sentenceList.at(i) == "weather.get")
             {
                 if(i == stringList.size()){
@@ -121,13 +130,39 @@ QString core::getAI(QString m_target, QString lang, qreal lat, qreal lng)
                     QString target_file = db->searchFile("db", "_WEATHER", lang);
                     returnString.clear();
                     returnString.append(db->getReply(target_file, rand() % db->getReplySize(target_file)).replace("%DATE%", weather->dayOfWeek()).replace("%AREA%", m_target.replace(stringList.at(i), QString())).replace("%TEMP%", weather->temperature()).replace("%DES%", weather->weatherDescription())); // 현재 위치의 날씨만 가져오기
+                    is_retype = false;
                 }else{
-                    geocoding *geo = new geocoding(set->getGeoCodingAPIKey(), m_target.replace(stringList.at(i), QString()));
-                    Weather *weather = new Weather(0, set->getWeatherAPIKey(), geo->getLocation().lat, geo->getLocation().lng);
-                    QString target_file = db->searchFile("db", "_WEATHER", lang);
-                    returnString.clear();
-                    returnString.append(db->getReply(target_file, rand() % db->getReplySize(target_file)).replace("%DATE%", weather->dayOfWeek()).replace("%AREA%", geo->getAddress().short_name).replace("%TEMP%", weather->temperature()).replace("%DES%", weather->weatherDescription())); // 지역과 함께 날씨 가져오기
+                    QString temp_weather_area = m_target.replace(stringList.at(i), QString());
 
+                    for(int a = 0; a < stringList.size(); a++)
+                    {
+                        if(a < stringList.size() - 1 && a != 0)
+                        {
+
+                            if(QString(sentenceList.at(a + 1)) == "weather.get")
+                            {
+
+                            }else if(!a == 0){
+                                if(QString(sentenceList.at(a - 1)) == "weather.get"){ } else {
+                                    if(QString(sentenceList.at(a)) == "weather.area"){ } else { temp_weather_area.replace(stringList.at(a), QString()); }
+                                }
+                            }else{
+                                if(QString(sentenceList.at(a)) == "weather.area"){ } else { temp_weather_area.replace(stringList.at(a), QString()); }
+                            }
+                        }else{
+                            if(QString(sentenceList.at(a)) == "weather.area"){ } else { temp_weather_area.replace(stringList.at(a), QString()); }
+                        }
+                    }
+
+                    geocoding *geo = new geocoding(set->getGeoCodingAPIKey(), temp_weather_area);
+                    if(!geo->getAddress().long_name.isEmpty())
+                    {
+                        Weather *weather = new Weather(0, set->getWeatherAPIKey(), geo->getLocation().lat, geo->getLocation().lng);
+                        QString target_file = db->searchFile("db", "_WEATHER", lang);
+                        returnString.clear();
+                        returnString.append(db->getReply(target_file, rand() % db->getReplySize(target_file)).replace("%DATE%", weather->dayOfWeek()).replace("%AREA%", geo->getAddress().short_name).replace("%TEMP%", weather->temperature()).replace("%DES%", weather->weatherDescription())); // 지역과 함께 날씨 가져오기
+                        is_retype = false;
+                    }
                 }
             }else if(sentenceList.at(i) == "feel.bad"){
                 if(Target == "target.my")
@@ -174,11 +209,12 @@ QString core::getAI(QString m_target, QString lang, qreal lat, qreal lng)
                     returnString.replace("%GOOGLESEARCH%", tmp_returnString);
             }else if(sentenceList.at(i) == "target.with"){
                 WithTarget = sentenceList.at(i - 1);
+            }else if(sentenceList.at(i) == "text.noun"){
+
             }else{
                 QDateTime time = time.currentDateTime();
                 returnString.clear();
                 returnString.append(QString(replyList.at(i).at(random_num % replyList.at(i).size()).toStdString().c_str()).replace("%TIME%", time.time().toString()).replace("%BOTNAME%", BOTNAME));
-                is_retype = false;
             }
         }
     }

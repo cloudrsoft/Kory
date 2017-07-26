@@ -8,13 +8,12 @@
 
 using namespace std;
 
+settings *set = new settings;
 core *ai = new core;
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-
-    settings *set = new settings;
 
     Learn_Manager *learn_manager = new Learn_Manager;
     learn_manager->learnFromFile(":/test/Extra/kr_text.txt", "db");

@@ -5,7 +5,7 @@
 
     }
 
-    bool write::writeFile(QString source_dir, QString filetype, QString filename, QStringList Reply, QString Lang, QString Type)
+    bool write::writeFile(QString source_dir, QString filetype, QString filename, QStringList Reply, QString Lang, QString Type, int Mind, QString Others)
     {
         QDir dir;
         QString dir_name;
@@ -42,18 +42,7 @@
 
         QTextStream tempStream(&file);
 
-        tempStream << filetype + "\n" << filename + "\n" << reply_string + "\n" << Lang + "\n" << Type;
-
-        /*QString tempString = tempStream.readAll();
-        unsigned char in[] = (unsigned char)(tempString.toStdString().c_str());
-        //strcpy( static_cast <char*>(in), tempString.toStdString().c_str());
-        unsigned char out[10];
-
-        AES_set_encrypt_key(key32, 32, &aes_ks3);
-
-        AES_encrypt(in, out, &aes_ks3);
-
-        file.write(out);*/
+        tempStream << filetype + "\n" << filename + "\n" << reply_string + "\n" << Lang + "\n" << Type + "\n" << QString::number(Mind) + "\n" << Others;
 
         if(file.readAll().isEmpty()) // check file
         {

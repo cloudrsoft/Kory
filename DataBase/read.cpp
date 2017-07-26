@@ -37,6 +37,16 @@
         return QString(readFile(fileName).at(4));
     }
 
+    int read::getMind(QString fileName)
+    {
+        return QString(readFile(fileName).at(5)).toInt();
+    }
+
+    QString read::getOthers(QString fileName)
+    {
+        return QString(readFile(fileName).at(6));
+    }
+
     /* 서브 함수 */
 
     QStringList read::readFile(QString fileName)

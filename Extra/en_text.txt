@@ -1,9 +1,11 @@
-_UNKNOWN%NEXT%_UNKNOWN%NEXT%Oh, I can't understand.|Sorry, i can search from Google.|Umm.. i can not understand.%NEXT%en-us%NEXT%5
-_BADS%NEXT%fuck%NEXT%oh, fuck%NEXT%en-us%NEXT%feel.bad
-others%NEXT%hello%NEXT%Hello, It's %BOTNAME%.|Hello.%NEXT%en-us%NEXT%4
-target%NEXT%qwerty%NEXT%%NEXT%en-us%NEXT%target.my
-target%NEXT%i%NEXT%%NEXT%en-us%NEXT%target.target
-target%NEXT%you%NEXT%%NEXT%en-us%NEXT%target.my
-target%NEXT%your%NEXT%%NEXT%en-us%NEXT%target.my
-_WEATHER%NEXT%_WEATHER%NEXT%%DATE%, %AREA% is %DES% and, temperature is %TEMP%.|%DATE%, %AREA% is %DES% and, temperature is %TEMP%. thanks!|%DATE%, %AREA% is %DES% and, temperature is %TEMP%. can i help you?%NEXT%en-us%NEXT%ai.others
-noun%NEXT%weather%NEXT%%NEXT%en-us%NEXT%weather.get
+_UNKNOWN%NEXT%_UNKNOWN%NEXT%Oh, I can't understand.|Sorry, i can search from Google.|Umm.. i can not understand.%NEXT%en-us%NEXT%ai.unknowns%NEXT%0%NEXT%%NOTYPE%
+_BADS%NEXT%fuck%NEXT%oh, fuck%NEXT%en-us%NEXT%feel.bad%NEXT%0%NEXT%%NOTYPE%
+others%NEXT%hello%NEXT%Hello, It's %BOTNAME%.|Hello.%NEXT%en-us%NEXT%ai.others%NEXT%0%NEXT%%NOTYPE%
+target%NEXT%qwerty%NEXT%%NEXT%en-us%NEXT%target.my%NEXT%0%NEXT%%NOTYPE%
+target%NEXT%i%NEXT%%NEXT%en-us%NEXT%target.target%NEXT%0%NEXT%%NOTYPE%
+target%NEXT%you%NEXT%%NEXT%en-us%NEXT%target.my%NEXT%0%NEXT%%NOTYPE%
+target%NEXT%your%NEXT%%NEXT%en-us%NEXT%target.my%NEXT%0%NEXT%%NOTYPE%
+_WEATHER%NEXT%_WEATHER%NEXT%%DATE%, %AREA% is %DES% and, temperature is %TEMP%.|%DATE%, %AREA% is %DES% and, temperature is %TEMP%. thanks!|%DATE%, %AREA% is %DES% and, temperature is %TEMP%. can i help you?%NEXT%en-us%NEXT%ai.others%NEXT%0%NEXT%%NOTYPE%
+noun%NEXT%weather%NEXT%%NEXT%en-us%NEXT%weather.get%NEXT%0%NEXT%%NOTYPE%
+subject%NEXT%how%NEXT%%NEXT%en-us%NEXT%text.subject%NEXT%0%NEXT%%NOTYPE%
+person%NEXT%quickn%NEXT%%NEXT%en-us%NEXT%world.person%NEXT%0%NEXT%job:maker
