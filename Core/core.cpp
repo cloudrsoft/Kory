@@ -157,11 +157,14 @@ QString core::getAI(QString m_target, QString lang, qreal lat, qreal lng)
                     geocoding *geo = new geocoding(set->getGeoCodingAPIKey(), temp_weather_area);
                     if(!geo->getAddress().long_name.isEmpty())
                     {
-                        Weather *weather = new Weather(0, set->getWeatherAPIKey(), geo->getLocation().lat, geo->getLocation().lng);
-                        QString target_file = db->searchFile("db", "_WEATHER", lang);
-                        returnString.clear();
-                        returnString.append(db->getReply(target_file, rand() % db->getReplySize(target_file)).replace("%DATE%", weather->dayOfWeek()).replace("%AREA%", geo->getAddress().short_name).replace("%TEMP%", weather->temperature()).replace("%DES%", weather->weatherDescription())); // 지역과 함께 날씨 가져오기
-                        is_retype = false;
+                        if(!geo->getAddress().long_name.toInt())
+                        {
+                            Weather *weather = new Weather(0, set->getWeatherAPIKey(), geo->getLocation().lat, geo->getLocation().lng);
+                            QString target_file = db->searchFile("db", "_WEATHER", lang);
+                            returnString.clear();
+                            returnString.append(db->getReply(target_file, rand() % db->getReplySize(target_file)).replace("%DATE%", weather->dayOfWeek()).replace("%AREA%", geo->getAddress().short_name).replace("%TEMP%", weather->temperature()).replace("%DES%", weather->weatherDescription())); // 지역과 함께 날씨 가져오기
+                            is_retype = false;
+                        }
                     }
                 }
             }else if(sentenceList.at(i) == "feel.bad"){
