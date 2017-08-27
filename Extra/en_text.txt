@@ -7,5 +7,5 @@ target%NEXT%you%NEXT%%NEXT%en-us%NEXT%target.my%NEXT%0%NEXT%%NOTYPE%
 target%NEXT%your%NEXT%%NEXT%en-us%NEXT%target.my%NEXT%0%NEXT%%NOTYPE%
 _WEATHER%NEXT%_WEATHER%NEXT%%DATE%, %AREA% is %DES% and, temperature is %TEMP%.|%DATE%, %AREA% is %DES% and, temperature is %TEMP%. thanks!|%DATE%, %AREA% is %DES% and, temperature is %TEMP%. can i help you?%NEXT%en-us%NEXT%ai.others%NEXT%0%NEXT%%NOTYPE%
 noun%NEXT%weather%NEXT%%NEXT%en-us%NEXT%weather.get%NEXT%0%NEXT%%NOTYPE%
-subject%NEXT%how%NEXT%%NEXT%en-us%NEXT%text.subject%NEXT%0%NEXT%%NOTYPE%
+subject%NEXT%how%NEXT%%NEXT%en-us%NEXT%text.question%NEXT%0%NEXT%%NOTYPE%
 person%NEXT%quickn%NEXT%%NEXT%en-us%NEXT%world.person%NEXT%0%NEXT%job:maker

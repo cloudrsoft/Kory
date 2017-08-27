@@ -3,6 +3,7 @@ text.direct_object
 text.verb
 text.complement
 text.noun
+text.question
 ai.others
 ai.unknown
 target.my

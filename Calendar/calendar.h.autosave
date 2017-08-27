@@ -1,0 +1,22 @@
+#ifndef CALENDAR_H
+#define CALENDAR_H
+
+#include <QDateTime>
+
+#include <settings.h>
+
+class Calendar
+{
+public:
+    Calendar();
+
+    void addCalendar(int num, QDateTime start_time, QDateTime last_time, int type, QString event);
+    void removeCalendar(int num);
+
+    int getNumber(QString event, QDateTime time = QDateTime());
+    
+private:
+    settings *set = new settings;
+};
+
+#endif // CALENDAR_H

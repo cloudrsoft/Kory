@@ -48,8 +48,11 @@ QString core::getAI(QString m_target, QString lang, qreal lat, qreal lng)
     QString Target = 0;
     QString WithTarget;
     bool is_retype = true;
+    bool is_loop = false;
     bool is_good_message = false;
     bool is_bad_message = false;
+    bool is_question = false;
+    int question_num = 0;
     int goodCount;
     int badCount;
 
@@ -96,7 +99,21 @@ QString core::getAI(QString m_target, QString lang, qreal lat, qreal lng)
                 Target = "target.my";
             }else if(sentenceList.at(i) == "target.target")
                 Target = "target.target";
-            else if(sentenceList.at(i) == "feel.bad")
+            else if(sentenceList.at(i) == "text.question"){
+                if(is_loop)
+                    break;
+
+                question_num = i;
+
+                if(i == stringList.size())
+                {
+                    is_question = true;
+                    is_loop = true;
+                    i = 0;
+                }else{
+                    is_question = true;
+                }
+            }else if(sentenceList.at(i) == "feel.bad")
             {
                 if(Target == "target.my")
                 {
@@ -109,6 +126,7 @@ QString core::getAI(QString m_target, QString lang, qreal lat, qreal lng)
                 is_bad_message = true;
             }else if(sentenceList.at(i) == "weather.area")
             {
+                is_question = true;
                 QString temp_weather_area = m_target.replace(stringList.at(i), QString());
 
                 for(int a = 0; a < stringList.size(); a++)
@@ -125,6 +143,7 @@ QString core::getAI(QString m_target, QString lang, qreal lat, qreal lng)
                 is_retype = false;
             }else if(sentenceList.at(i) == "weather.get")
             {
+                is_question = true;
                 if(i == stringList.size()){
                     Weather *weather = new Weather(0, set->getWeatherAPIKey(), lat, lng);
                     QString target_file = db->searchFile("db", "_WEATHER", lang);
@@ -227,7 +246,14 @@ QString core::getAI(QString m_target, QString lang, qreal lat, qreal lng)
         QString searchFile = db->searchFile("db", "_UNKNOWN", lang);
 
         returnString.clear();
+        if(is_question = true)
+        {
+            QString tmp = m_target.split(" ").join(QString());
+            returnString.append(tmp.replace(stringList.at(question_num),QString()));
+
+        }else{
         returnString.append(db->getReply(searchFile, random_num % db->getReplySize(searchFile))); // 일치하는 문장이 없을때
+        }
     }
 
     set->goodPoint(goodCount - tmp_goodCount);

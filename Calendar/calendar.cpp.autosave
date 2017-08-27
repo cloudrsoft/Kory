@@ -1,0 +1,21 @@
+#include "calendar.h"
+
+Calendar::Calendar()
+{
+
+}
+
+void Calendar::addCalendar(int num, QDateTime start_time, QDateTime last_time, int type, QString event)
+{
+    set->addTask("Task #" + QString::number(num), );
+}
+
+void Calendar::removeCalendar(int num)
+{
+
+}
+
+int Calendar::getNumber(QString event, QDateTime time)
+{
+
+}
