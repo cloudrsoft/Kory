@@ -1,4 +1,6 @@
 # qwerty
+# ! Notice ! This Project is moved to https://github.com/xuserwhat/qwerty
+
 Qwerty (Virtual Assistant Project)
 Meet Virtual Assistant 'Qwerty' on Desktop or OpenSource
 Qwerty have many Modules
